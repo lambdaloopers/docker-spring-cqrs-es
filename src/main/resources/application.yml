@@ -1,0 +1,39 @@
+api:
+  version: ${API_VERSION:0.0.1}
+
+kafka:
+  bootstrap:
+    servers: ${KAFKA_HOST:localhost}:${KAFKA_PORT:9092}
+  consumer-group-id: ${KAFKA_CONSUMER_GROUP_ID:app}
+  topic: ${KAFKA_TOPIC:app}
+
+spring:
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/${MYSQL_DATABASE:app}?useSSL=false
+    username: ${MYSQL_USER:root}
+    password: ${MYSQL_PASSWORD:root}
+    testWhileIdle: true
+    validationQuery: SELECT 1
+    initialization-mode: ${MYSQL_SCHEMA:never}
+    schema: "classpath*:schema.sql"
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+
+logging:
+  file: /var/log/app/app.log
+  level:
+    org:
+      hibernate: ERROR
+
+jsondoc:
+  version: 1.0
+  basePath: http://localhost:8080
+  playgroundEnabled: true
+  displayMethodAs: URI
+  packages:
+    - com.app

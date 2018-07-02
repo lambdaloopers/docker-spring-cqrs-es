@@ -1,0 +1,19 @@
+#!/bin/bash
+
+####################
+###   Binaries   ###
+####################
+DOCKER_COMPOSE=$(which docker-compose)
+####################
+
+PROJECT_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )"
+
+rm -rf ${PROJECT_PATH}/target
+
+export USER_ID=${UID}
+export GROUP_ID=${UID}
+
+${DOCKER_COMPOSE} -f ${PROJECT_PATH}/provision-compose.yml down;
+${DOCKER_COMPOSE} -f ${PROJECT_PATH}/provision-compose.yml up -d &&
+${DOCKER_COMPOSE} -f ${PROJECT_PATH}/provision-compose.yml logs -f &&
+${DOCKER_COMPOSE} -f ${PROJECT_PATH}/provision-compose.yml down;

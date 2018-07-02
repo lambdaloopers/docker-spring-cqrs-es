@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  jdk-provision:
+    build:
+      context: .
+      dockerfile: docker/provision/Dockerfile
+      args:
+        - USER_ID=${USER_ID}
+        - GROUP_ID=${GROUP_ID}
+    command: bash -c "cd /app && ./mvnw clean package -DskipTests"
+    volumes:
+      - .:/app
+      - ~/.m2:/opt/jboss/.m2
