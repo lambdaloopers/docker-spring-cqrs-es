@@ -2,6 +2,12 @@
 
 RESTful backend for a CQRS Kafka-based event sourcing API.
 
+https://www.slideshare.net/lambdaloopers/kafka-infrastructure-development
+https://www.slideshare.net/lambdaloopers/kafka-infrastructure-production
+https://www.slideshare.net/lambdaloopers/kafka-infrastructure-services
+https://www.slideshare.net/lambdaloopers/kafka-infrastructure-monitoring
+https://www.slideshare.net/lambdaloopers/kafka-infrastructure-cloud
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
